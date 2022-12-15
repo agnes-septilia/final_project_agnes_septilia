@@ -7,7 +7,6 @@ from pyspark.sql.functions import *
 from pyspark.sql.types import *
 
 
-
 # build mysql connection with spark
 spark_mysql = SparkSession \
     .builder \
@@ -17,7 +16,7 @@ spark_mysql = SparkSession \
     .getOrCreate()
 
 
-# get application_train dataframe from mysql 
+# get application_train data from mysql 
 application_train = spark_mysql.read.format('jdbc').options(
     url='jdbc:mysql://localhost:3306/mysql',
     driver='com.mysql.cj.jdbc.Driver',
@@ -26,7 +25,7 @@ application_train = spark_mysql.read.format('jdbc').options(
     password='mysqlroot').load()    
 
 
-# get application_test dataframe from mysql 
+# get application_test data from mysql 
 application_test = spark_mysql.read.format('jdbc').options(
     url='jdbc:mysql://localhost:3306/mysql',
     driver='com.mysql.cj.jdbc.Driver',
@@ -34,7 +33,6 @@ application_test = spark_mysql.read.format('jdbc').options(
     user='root',
     password='mysqlroot').load()    
 # application_test.show()
-
 
 
 
@@ -46,7 +44,8 @@ spark_postgres = SparkSession \
     .appName("final_project_postgres") \
     .getOrCreate()
 
-# upload application_train dataframe to postgres
+
+# upload application_train data to postgres
 application_train.write.format('jdbc').options(
     url='jdbc:postgresql://localhost:5432/postgres',
     driver='org.postgresql.Driver',
@@ -54,7 +53,8 @@ application_train.write.format('jdbc').options(
     user='postgres',
     password='1234').mode('ignore').save() 
 
-# upload application_test dataframe to postgres
+
+# upload application_test data to postgres
 application_test.write.format('jdbc').options(
     url='jdbc:postgresql://localhost:5432/postgres',
     driver='org.postgresql.Driver',
