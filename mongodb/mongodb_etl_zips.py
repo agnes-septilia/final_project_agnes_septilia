@@ -18,7 +18,7 @@ zips_coll = sample_training["zips"]
 sample_training_zips = pd.DataFrame()
 
 
-for field in zips_coll.find().limit():
+for field in zips_coll.find():
     zips_column = []
     zips_value = []
     
