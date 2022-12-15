@@ -1,3 +1,4 @@
+# import libraries
 from datetime import datetime
 from datetime import timedelta
 from airflow import DAG
@@ -8,7 +9,7 @@ from airflow.utils.dates import days_ago
 
 # DAG Definition
 default_args = {
-	'owner': 'Admin',
+	'owner': 'Admin'
 }
 
 with DAG(
