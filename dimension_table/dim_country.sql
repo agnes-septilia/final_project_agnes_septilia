@@ -1,7 +1,6 @@
 -- Create dim country (id, country_code)
-drop table if exists final_project.dim_country; 
 
-create table final_project.dim_country (
+create table if not exists final_project.dim_country (
 	id uuid unique,
 	country_code varchar unique,
 	primary key(id)
@@ -16,6 +15,7 @@ select
 	gen_random_uuid() as id, 
 	case when country_code is null then 'others' else country_code end as country_code
 from (
+	-- get data from companies
 	select distinct 
 		offices_country_code as country_code
 	from final_project.sample_training_companies
