@@ -1,3 +1,4 @@
+# import libraries
 from datetime import datetime
 from datetime import timedelta
 from airflow import DAG
@@ -8,7 +9,7 @@ from airflow.utils.dates import days_ago
 
 # DAG Definition
 default_args = {
-	'owner': 'Admin',
+	'owner': 'Admin'
 }
 
 with DAG(
@@ -34,7 +35,6 @@ with DAG(
     	task_id = 'mysql_to_postgres',
     	bash_command='python3 /home/agnes/Documents/digital_skola/Project/final_project/spark/mysql_to_postgres.py'
         )
-
 
     # Finish job
     job_finish = DummyOperator(
