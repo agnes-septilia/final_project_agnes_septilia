@@ -45,5 +45,3 @@ while True:
         task = extract(link, key, value)
         producer.send('TopicCurrency', json.dumps(task).encode('utf-8'))
     time.sleep(60)
-    
-
