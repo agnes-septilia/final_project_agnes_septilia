@@ -1,7 +1,7 @@
+# import libraries
 import json
 from kafka import KafkaConsumer
 from sqlalchemy import create_engine, text
-# import psycopg2
 
 
 # connection to postgres
@@ -18,16 +18,16 @@ with engine.connect() as conn:
                 timestamp varchar);
             """))
 
-
+# connect to Kafka Consumer 
 consumer = KafkaConsumer(
                 'TopicCurrency'
                 , bootstrap_servers=['localhost:9092']
-                # , auto_offset_reset='earliest'
                 , api_version=(0,10)
                 , value_deserializer = lambda m: json.loads(m.decode("utf-8"))
             )
 
 
+# append each extracted data as the new row to the table in Postgres
 for message in consumer:
 
     json_data = message.value
