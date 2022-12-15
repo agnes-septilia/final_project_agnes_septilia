@@ -21,7 +21,7 @@ application_train = spark.read \
                 .format("csv") \
                 .option("inferSchema", "true") \
                 .option("header", "true") \
-                .load('/home/agnes/Documents/digital_skola/Project/final_project/spark/source/application_train.csv')
+                .load('/home/agnes/Documents/digital_skola/Project/final_project/csv_file/application_train.csv')
 # application_train.show()
 
 
@@ -30,7 +30,7 @@ application_test = spark.read \
                 .format("csv") \
                 .option("inferSchema", "true") \
                 .option("header", "true") \
-                .load('/home/agnes/Documents/digital_skola/Project/final_project/spark/source/application_test.csv')
+                .load('/home/agnes/Documents/digital_skola/Project/final_project/csv_file/application_test.csv')
     
 
 # upload data application_train to mysql
