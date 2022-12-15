@@ -22,7 +22,7 @@ sample_training_companies = pd.DataFrame()
 array_fields = []
 
 
-for field in companies_coll.find().limit():
+for field in companies_coll.find():
     comps_dict = {}
     
     for key, value in field.items():
