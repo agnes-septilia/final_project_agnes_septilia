@@ -1,7 +1,6 @@
 -- Create fact daily average currency
-drop table if exists final_project.fact_daily_avg_currency; 
 
-create table final_project.fact_daily_avg_currency (
+create table if not exists final_project.fact_daily_avg_currency (
 	currency_id varchar,
 	currency_name varchar,
 	day date,
@@ -21,7 +20,7 @@ select
 	"timestamp"::date as day,
 	avg(rate) as avg_rate
 from final_project.topic_currency
-where "timestamp"::date = {{ macros.ds }}::date - interval '1 day'
+where (to_timestamp("timestamp",'YYYY-MM-DD HH24:MI:SS'))::date = '{{ execution_date }}'::date - interval '1 day'
 group by currency_id , currency_name , "timestamp"::date
 order by currency_id
 )
