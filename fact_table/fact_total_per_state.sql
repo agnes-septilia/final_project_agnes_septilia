@@ -1,6 +1,6 @@
-drop table if exists final_project.fact_total_per_state; 
+-- Create fact total per state
 
-create table final_project.fact_total_per_state (
+create table if not exists final_project.fact_total_per_state (
 	state varchar unique,
 	total_city varchar,
 	total_office varchar
